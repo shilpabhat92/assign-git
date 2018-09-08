@@ -1,4 +1,44 @@
 What is a gitignore file and what should it include for a Java project?
+
+Answer: Usually, in every project there are few files that have to be intentionally untracked by git. For example,
+Eclipse’s '.project' doesnt have to be pushed to remote repository. gitignore file is used to specify such files 
+by giving the file extensions or patterns.
+
+Files to include in gitignore file of a Java project are: 
+
+# Log file
+*.log
+
+# Compiled class file
+*.class
+
+# Package Files #
+*.jar
+*.zip
+*.rar
+*.tar
+
+If IDE used is Eclipse and maven is used to manage dependecies :
+
+# eclipse
+.settings/
+.classpath
+.project
+
+# Maven 
+target/
+
 What does fast-forward in Git mean?
+
+Answer: When we try to merge a commit with another commit which is reachable by following the first commit’s history, in the merged branch, git moves the pointer forward because there is no other commit on top of it to merge. This is called a “fast-forward.” 
+
+Example: Assuming, that a branch name ‘test’ was created from ‘master’. After some work is done and pushed to test branch, we try to merge ‘test' branch with ‘master’. Meanwhile, no other commits are made to master, that is it remained in the same state as it was when the test branch was created. Then the merge from test to master will be fast forward. If master was changed in the meantime, the merge will be non-fast forward and the solution to make it fast forward is to rebase the test branch with master and then merge it with the master branch.
+
 Why should you have different branches?
+
+Answer : Usually there is a team working for a project where team members work on different features. Each team member can thus use a branch of his/her own
+and make changes to the branch until that feature is not fully implemented and made stable. Once it is complete that branch can be merged with the master so that the master always has a stable build. Having different branches also makes sure that the bugs or incorrect features added by a team member while a feature is under development doesnt break the code of other team members.
+
 In a project how many remote Git repositories do you usually have?
+
+Answer: Generally, there is one git repository for a project. There can be multiple branches if more than one feature is being developed by different team members.
